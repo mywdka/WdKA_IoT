@@ -1,0 +1,123 @@
+<abp>
+mac set devaddr 0177C80C
+mac set nwkskey 5B462C58B7A7DF9942D6B709858CA4C8
+mac set appskey 46F1EC6FE128EB2E62EB0A38B4E9A3A6
+mac save
+mac join abp
+</abp>
+
+<otaa>
+//mac set appeui APPEUI not enabled for this application
+mac set appkey 5DE15AF08E1422D77092008D7B7C8E9E
+mac save
+mac join otaa
+</otaa>
+
+mac set ch status 0 off
+mac set ch status 1 off
+mac set ch status 2 off
+
+mac set ch freq 3 868100000
+mac set ch dcycle 3 0
+mac set ch drrange 3 0 5
+mac set ch status 3 on
+
+mac set ch freq 4 868300000
+mac set ch dcycle 4 0
+mac set ch drrange 4 0 5
+mac set ch status 4 on
+
+mac set ch freq 5 868500000
+mac set ch dcycle 5 0
+mac set ch drrange 5 0 5
+mac set ch status 5 on
+
+mac set ch freq 6 868850000
+mac set ch dcycle 6 0
+mac set ch drrange 6 0 5
+mac set ch status 6 on
+
+
+mac set ch freq 7 869050000
+mac set ch dcycle 7 0
+mac set ch drrange 7 0 5
+mac set ch status 7 on
+
+mac set ch freq 8 869525000
+mac set ch dcycle 8 0
+mac set ch drrange 8 0 5
+mac set ch status 8 on
+
+mac set ch freq 9 867100000
+mac set ch dcycle 9 0
+mac set ch drrange 9 0 5
+mac set ch status 9 on
+
+mac set ch freq 10 867300000
+mac set ch dcycle 10 0
+mac set ch drrange 10 0 5
+mac set ch status 10 on
+
+mac set rx2 3 869525000
+
+mac pause
+radio set mode lora
+radio set freq 868300000
+radio set sf sf7
+radio set bw 250
+mac resume
+
+mac tx cnf 3 <data>
+
+Registered DEVEUIs
+0004A30B001B2BE4
+0004A30B001B80FB
+0004A30B001B2A40
+0004A30B001B64F5
+0004A30B001B6367
+0004A30B001B2488
+0004A30B001B2529
+
+
+BE-7A-00-00-00-00-00-16 01-77-C8-0C
+00-04-A3-0B-00-1B-9A-A9	01-1D-95-98
+00-04-A3-0B-00-1B-80-FB	01-93-16-CE
+00-04-A3-0B-00-1B-64-F5	00-50-D0-16
+00-04-A3-0B-00-1B-63-67	01-FD-5C-13
+00-04-A3-0B-00-1B-62-56	00-09-04-05
+00-04-A3-0B-00-1B-2B-E4	00-59-50-E0
+00-04-A3-0B-00-1B-2A-40	01-99-4A-00
+00-04-A3-0B-00-1B-25-29	01-3A-57-FC
+00-04-A3-0B-00-1B-24-88	01-20-39-39
+
+
+== Power levels
+Power Index   Power Level (868 MHz)
+0             N / A
+1             14 dBm
+2             11 dBm
+3              8 dBm
+4              5 dBm
+5              2 dBm
+
+Data Rate (DR)
+Data Rate  Configuration Indicative physical  bit rate [bits/s]
+0          LoRa: SF12 / 125 kHz               250
+1          LoRa: SF11 / 125 kHz	              440
+2          LoRa: SF10 / 125 kHz 	          980
+3          LoRa: SF9 / 125 kHz	              1760
+4          LoRa: SF8 / 125 kHz	              3125
+5          LoRa: SF7 / 125 kHz	              5470
+
+Duty Cycle (Dcycle)
+(100 / Dt) - 1
+
+Data Rate Range (DRRange)
+between max & min: 0 - 7
+
+
+Radio spreading factor (SF)
+“sf7”, “sf8”, “sf9”, “sf10”, “sf11” and “sf12”
+
+Radio bandwidth (BW)
+125 kHz, 250 kHz and 500 kHz 
