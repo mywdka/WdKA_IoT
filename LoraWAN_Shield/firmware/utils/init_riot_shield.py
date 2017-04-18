@@ -4,15 +4,27 @@ import serial
 import sys
 import time
 
+# bit rate [bit/s]
+# 0 LoRa: SF12 / 125 kHz 250
+# 1 LoRa: SF11 / 125 kHz 440
+# 2 LoRa: SF10 / 125 kHz 980
+# 3 LoRa: SF9 / 125 kHz 1760
+# 4 LoRa: SF8 / 125 kHz 3125
+# 5 LoRa: SF7 / 125 kHz 5470
+# 6 LoRa: SF7 / 250 kHz 11000
+# 7 FSK: 50 kbps 50000
+# 8..15 RFU
+
 channels = [ {'ch': 0, 'f':0, 'dcycle': 302, 'drrange':(0,5), 'status': 'on'},
              {'ch': 1, 'f':0, 'dcycle': 302, 'drrange':(0,5), 'status': 'on'},
              {'ch': 2, 'f':0, 'dcycle': 302, 'drrange':(0,5), 'status': 'on'},
-             {'ch': 3, 'f':868850000, 'dcycle':   0, 'drrange':(0,5), 'status': 'on'},
-             {'ch': 4, 'f':869050000, 'dcycle':   0, 'drrange':(0,5), 'status': 'on'},
-             {'ch': 5, 'f':869525000, 'dcycle':   0, 'drrange':(0,5), 'status': 'on'},
-             {'ch': 6, 'f':867100000, 'dcycle':   0, 'drrange':(0,5), 'status': 'on'},
-             {'ch': 7, 'f':867300000, 'dcycle':   0, 'drrange':(0,5), 'status': 'on'},
-             {'ch': 8, 'f':868300000, 'dcycle':   0, 'drrange':(6,6), 'status': 'on'} ]
+             {'ch': 3, 'f':867100000, 'dcycle':   0, 'drrange':(0,5), 'status': 'on'},
+             {'ch': 4, 'f':867300000, 'dcycle':   0, 'drrange':(0,5), 'status': 'on'},
+             {'ch': 5, 'f':867500000, 'dcycle':   0, 'drrange':(0,5), 'status': 'on'},
+             {'ch': 6, 'f':867700000, 'dcycle':   0, 'drrange':(0,5), 'status': 'on'},
+             {'ch': 7, 'f':867900000, 'dcycle':   0, 'drrange':(0,5), 'status': 'on'},
+             {'ch': 8, 'f':868300000, 'dcycle':   0, 'drrange':(6,6), 'status': 'on'},
+             {'ch': 9, 'f':868800000, 'dcycle':   0, 'drrange':(7,7), 'status': 'on'} ]
 
 def set_freq_err(chan, freq):
     print 'error setting frequency %d for chan %d' % (freq, chan)
@@ -69,16 +81,16 @@ if __name__ == '__main__':
         if read(s) != 'ok': set_freq_err(num, f)
         write(s, 'mac set ch status %d %s\r\n' % (num, status))
         if read(s) != 'ok': set_freq_err(num, f)
-    
+
     write(s, 'mac set rx2 0 869525000\r\n')
     if read(s) != 'ok': print 'Error setting rx2'
-    
+
     write(s, 'mac set rxdelay1 1000\r\n')
     if read(s) != 'ok': print 'Error setting rxdelay1'
 
     write(s, 'mac set retx 3\r\n')
     if read(s) != 'ok': print 'Error setting retx'
-	
+
     #write(s, 'mac set adr on\r\n')
     #if read(s) != 'ok': print 'Error setting adr'
 
@@ -99,7 +111,7 @@ if __name__ == '__main__':
 
     #write(s, 'mac set pwridx 1\r\n')
     #if read(s) != 'ok': print 'Error setting pwridx'
-	
+
     write(s, 'mac save\r\n')
     if read(s) != 'ok': print 'Error saving mac data'
 
